@@ -1,0 +1,794 @@
+body {
+  height: 100%;
+  font-family: 'Fira Mono','courier new', monospace;
+}
+
+#diff {
+  vertical-align: middle;
+  width: 70px;
+}
+
+p {
+  line-height: normal;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.small {
+  font-size: 12px;
+  color: grey;
+  margin-top: 20px;
+}
+
+h4 {
+  font-weight: 200;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.box-game {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: -webkit-linear-gradient(#86fcff 49%, #4bef58 50%);
+  background: linear-gradient(#86fcff 49%, #4bef58 50%);
+}
+
+.ui,
+.you-won,
+.game-over {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2vh 5vh;
+}
+.ui.visible,
+.you-won.visible,
+.game-over.visible {
+  display: block;
+}
+
+a {
+  color: crimson;
+  font-weight: bold;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  border: 4px solid crimson;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 14px;
+  text-align: center;
+  background: none;
+  color: crimson;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+button.start-game {
+  display: inline-block;
+}
+button:hover {
+  background: crimson;
+  color: white;
+}
+button:hover a {
+  color: crimson;
+  font-weight: bold;
+}
+button a {
+  text-decoration: none;
+  color: crimson;
+  font-weight: bold;
+}
+
+h1, p {
+  text-align: center;
+}
+
+.fire-button {
+  position: absolute;
+  top: calc(( 100vh / 2) + 15vw );
+  left: 44vw;
+  width: 12vw;
+  height: 12vw;
+  min-height: 65px;
+  min-width: 65px;
+  background: tomato;
+  border-radius: 100%;
+  color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  outline: none;
+  border: 0px solid white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  font-family: georgia;
+  font-size: 3vw;
+}
+.fire-button:hover {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background: tomato;
+  color: white;
+}
+.fire-button:active, .fire-button.pressed {
+  background: tomato;
+  box-shadow: 0 1px 2px transparent;
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+@-webkit-keyframes dragon-fly {
+  0% {
+    stroke-dashoffset: auto;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}
+
+@keyframes dragon-fly {
+  0% {
+    stroke-dashoffset: auto;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}
+@-webkit-keyframes dragon-fly-scia {
+  0% {
+    stroke-dashoffset: auto;
+  }
+  100% {
+    stroke-dashoffset: 50px;
+  }
+}
+@keyframes dragon-fly-scia {
+  0% {
+    stroke-dashoffset: auto;
+  }
+  100% {
+    stroke-dashoffset: 50px;
+  }
+}
+@-webkit-keyframes bullet {
+  0% {
+    stroke-dashoffset: -640px;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}
+@keyframes bullet {
+  0% {
+    stroke-dashoffset: -640px;
+  }
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}
+@-webkit-keyframes bullet-scia {
+  0% {
+    stroke-dashoffset: -650px;
+  }
+  100% {
+    stroke-dashoffset: -10px;
+  }
+}
+@keyframes bullet-scia {
+  0% {
+    stroke-dashoffset: -650px;
+  }
+  100% {
+    stroke-dashoffset: -10px;
+  }
+}
+@-webkit-keyframes heart {
+  0% {
+    fill: crimson;
+  }
+  10% {
+    fill: none;
+  }
+  15% {
+    fill: crimson;
+  }
+  25% {
+    fill: none;
+  }
+  30% {
+    fill: crimson;
+  }
+  40% {
+    fill: none;
+  }
+  45% {
+    fill: crimson;
+  }
+  55% {
+    fill: none;
+  }
+  100% {
+    stroke-width: 0px;
+  }
+}
+@keyframes heart {
+  0% {
+    fill: crimson;
+  }
+  10% {
+    fill: none;
+  }
+  15% {
+    fill: crimson;
+  }
+  25% {
+    fill: none;
+  }
+  30% {
+    fill: crimson;
+  }
+  40% {
+    fill: none;
+  }
+  45% {
+    fill: crimson;
+  }
+  55% {
+    fill: none;
+  }
+  100% {
+    stroke-width: 0px;
+  }
+}
+@-webkit-keyframes tower-explosion {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  10% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  20% {
+    -webkit-transform: scale(1.6, 1.6);
+            transform: scale(1.6, 1.6);
+  }
+  30% {
+    -webkit-transform: scale(0.3, 0.3);
+            transform: scale(0.3, 0.3);
+  }
+  40% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  50% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  60% {
+    -webkit-transform: scale(1.8, 1.8);
+            transform: scale(1.8, 1.8);
+  }
+  70% {
+    -webkit-transform: scale(0.2, 0.2);
+            transform: scale(0.2, 0.2);
+  }
+  80% {
+    -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+  }
+  90% {
+    -webkit-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+  }
+  95% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+}
+@keyframes tower-explosion {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  10% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  20% {
+    -webkit-transform: scale(1.6, 1.6);
+            transform: scale(1.6, 1.6);
+  }
+  30% {
+    -webkit-transform: scale(0.3, 0.3);
+            transform: scale(0.3, 0.3);
+  }
+  40% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  50% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  60% {
+    -webkit-transform: scale(1.8, 1.8);
+            transform: scale(1.8, 1.8);
+  }
+  70% {
+    -webkit-transform: scale(0.2, 0.2);
+            transform: scale(0.2, 0.2);
+  }
+  80% {
+    -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+  }
+  90% {
+    -webkit-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+  }
+  95% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+}
+@-webkit-keyframes dragon-explosion {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  10% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  20% {
+    -webkit-transform: scale(1.6, 1.6);
+            transform: scale(1.6, 1.6);
+  }
+  30% {
+    -webkit-transform: scale(0.3, 0.3);
+            transform: scale(0.3, 0.3);
+  }
+  40% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  50% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  60% {
+    -webkit-transform: scale(1.8, 1.8);
+            transform: scale(1.8, 1.8);
+  }
+  70% {
+    -webkit-transform: scale(0.2, 0.2);
+            transform: scale(0.2, 0.2);
+  }
+  80% {
+    -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+  }
+  90% {
+    -webkit-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+  }
+  95% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+}
+@keyframes dragon-explosion {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  10% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  20% {
+    -webkit-transform: scale(1.6, 1.6);
+            transform: scale(1.6, 1.6);
+  }
+  30% {
+    -webkit-transform: scale(0.3, 0.3);
+            transform: scale(0.3, 0.3);
+  }
+  40% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  50% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+  60% {
+    -webkit-transform: scale(1.8, 1.8);
+            transform: scale(1.8, 1.8);
+  }
+  70% {
+    -webkit-transform: scale(0.2, 0.2);
+            transform: scale(0.2, 0.2);
+  }
+  80% {
+    -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+  }
+  90% {
+    -webkit-transform: scale(0.5, 0.5);
+            transform: scale(0.5, 0.5);
+  }
+  95% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(0, 0);
+            transform: scale(0, 0);
+  }
+}
+#tower-explosion {
+  display: none;
+  width: 10vh;
+  height: 10vh;
+  position: absolute;
+  top: 48vh;
+  left: 13vw;
+  background: red;
+  border-radius: 100%;
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+#tower-explosion.go {
+  display: block;
+  -webkit-animation: tower-explosion 0.5s ease-in 2;
+          animation: tower-explosion 0.5s ease-in 2;
+}
+
+.dragon-explosion {
+  display: none;
+  width: 22vh;
+  height: 22vh;
+  opacity: 0.60;
+  position: absolute;
+  background: red;
+  border-radius: 100%;
+  -webkit-transform-origin: 50% 50%;
+      -ms-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+.dragon-explosion.go {
+  display: block;
+}
+
+.dragon-explosion:nth-child(1) {
+  top: 20vh;
+  left: 31vw;
+  -webkit-animation: dragon-explosion 0.8s 0.01s;
+          animation: dragon-explosion 0.8s 0.01s;
+}
+
+.dragon-explosion:nth-child(2) {
+  top: 32vh;
+  left: 35vw;
+  -webkit-animation: dragon-explosion 0.8s 0.17s;
+          animation: dragon-explosion 0.8s 0.17s;
+}
+
+.dragon-explosion:nth-child(3) {
+  top: 29vh;
+  left: 35vw;
+  -webkit-animation: dragon-explosion 0.8s 0.27s;
+          animation: dragon-explosion 0.8s 0.27s;
+}
+
+.dragon-explosion:nth-child(4) {
+  top: 30vh;
+  left: 35vw;
+  -webkit-animation: dragon-explosion 0.8s 0.17s;
+          animation: dragon-explosion 0.8s 0.17s;
+}
+
+.dragon-explosion:nth-child(5) {
+  top: 36vh;
+  left: 28vw;
+  -webkit-animation: dragon-explosion 0.8s 0.19s;
+          animation: dragon-explosion 0.8s 0.19s;
+}
+
+.dragon-explosion:nth-child(6) {
+  top: 31vh;
+  left: 52vw;
+  -webkit-animation: dragon-explosion 0.8s 0.28s;
+          animation: dragon-explosion 0.8s 0.28s;
+}
+
+.dragon-explosion:nth-child(7) {
+  top: 33vh;
+  left: 31vw;
+  -webkit-animation: dragon-explosion 0.8s 0.12s;
+          animation: dragon-explosion 0.8s 0.12s;
+}
+
+.dragon-explosion:nth-child(8) {
+  top: 25vh;
+  left: 46vw;
+  -webkit-animation: dragon-explosion 0.8s 0.27s;
+          animation: dragon-explosion 0.8s 0.27s;
+}
+
+.dragon-explosion:nth-child(9) {
+  top: 35vh;
+  left: 29vw;
+  -webkit-animation: dragon-explosion 0.8s 0.07s;
+          animation: dragon-explosion 0.8s 0.07s;
+}
+
+.dragon-explosion:nth-child(10) {
+  top: 38vh;
+  left: 46vw;
+  -webkit-animation: dragon-explosion 0.8s 0.02s;
+          animation: dragon-explosion 0.8s 0.02s;
+}
+
+.dragon-explosion:nth-child(11) {
+  top: 40vh;
+  left: 56vw;
+  -webkit-animation: dragon-explosion 0.8s 0.01s;
+          animation: dragon-explosion 0.8s 0.01s;
+}
+
+#heart-1,
+#heart-2,
+#heart-3 {
+  -webkit-transform-origin: 0 -50vh;
+      -ms-transform-origin: 0 -50vh;
+          transform-origin: 0 -50vh;
+}
+#heart-1.go,
+#heart-2.go,
+#heart-3.go {
+  -webkit-animation: heart 2s 1.2s;
+          animation: heart 2s 1.2s;
+}
+
+#dragon-a.fly,
+#dragon-b.fly,
+#dragon-c.fly,
+#dragon-d.fly,
+#dragon-e.fly {
+  display: block;
+  -webkit-animation: dragon-fly 4.2s ease-in;
+          animation: dragon-fly 4.2s ease-in;
+}
+#dragon-a.fly-facile,
+#dragon-b.fly-facile,
+#dragon-c.fly-facile,
+#dragon-d.fly-facile,
+#dragon-e.fly-facile {
+  display: block;
+  -webkit-animation: dragon-fly 5.5s ease-in;
+          animation: dragon-fly 5.5s ease-in;
+}
+#dragon-a.fly-difficile,
+#dragon-b.fly-difficile,
+#dragon-c.fly-difficile,
+#dragon-d.fly-difficile,
+#dragon-e.fly-difficile {
+  display: block;
+  -webkit-animation: dragon-fly 3s ease-in;
+          animation: dragon-fly 3s ease-in;
+}
+
+#dragon-a-scia.fly,
+#dragon-b-scia.fly,
+#dragon-c-scia.fly,
+#dragon-d-scia.fly,
+#dragon-e-scia.fly {
+  display: block;
+  -webkit-animation: dragon-fly-scia 4.2s ease-in;
+          animation: dragon-fly-scia 4.2s ease-in;
+}
+#dragon-a-scia.fly-facile,
+#dragon-b-scia.fly-facile,
+#dragon-c-scia.fly-facile,
+#dragon-d-scia.fly-facile,
+#dragon-e-scia.fly-facile {
+  display: block;
+  -webkit-animation: dragon-fly-scia 5.5s ease-in;
+          animation: dragon-fly-scia 5.5s ease-in;
+}
+#dragon-a-scia.fly-difficile,
+#dragon-b-scia.fly-difficile,
+#dragon-c-scia.fly-difficile,
+#dragon-d-scia.fly-difficile,
+#dragon-e-scia.fly-difficile {
+  display: block;
+  -webkit-animation: dragon-fly-scia 3s ease-in;
+          animation: dragon-fly-scia 3s ease-in;
+}
+
+#dragon-a {
+  display: none;
+  stroke-dashoffset: 878px;
+  stroke-dasharray: 918px;
+}
+
+#dragon-a-scia {
+  stroke-dashoffset: 918px;
+  stroke-dasharray: 918px;
+}
+
+#dragon-b {
+  display: none;
+  stroke-dashoffset: 762px;
+  stroke-dasharray: 802px;
+}
+
+#dragon-b-scia {
+  stroke-dashoffset: 802px;
+  stroke-dasharray: 802px;
+}
+
+#dragon-c {
+  display: none;
+  stroke-dashoffset: 835px;
+  stroke-dasharray: 875px;
+}
+
+#dragon-c-scia {
+  stroke-dashoffset: 875px;
+  stroke-dasharray: 875px;
+}
+
+#dragon-d {
+  display: none;
+  stroke-dashoffset: 955px;
+  stroke-dasharray: 995px;
+}
+
+#dragon-d-scia {
+  stroke-dashoffset: 995px;
+  stroke-dasharray: 995px;
+}
+
+#dragon-e {
+  display: none;
+  stroke-dashoffset: 1145px;
+  stroke-dasharray: 1180px;
+}
+
+#dragon-e-scia {
+  stroke-dashoffset: 1180px;
+  stroke-dasharray: 1180px;
+}
+
+#bullet {
+  stroke-dashoffset: -640px;
+  stroke-dasharray: 640px;
+}
+#bullet.fire {
+  -webkit-animation: bullet 1.5s cubic-bezier(0.48, 0.78, 0.69, 0.18);
+          animation: bullet 1.5s cubic-bezier(0.48, 0.78, 0.69, 0.18);
+}
+
+#bullet-scia {
+  stroke-dashoffset: -640px;
+  stroke-dasharray: 640px;
+}
+#bullet-scia.fire {
+  -webkit-animation: bullet-scia 1.5s cubic-bezier(0.48, 0.78, 0.69, 0.18);
+          animation: bullet-scia 1.5s cubic-bezier(0.48, 0.78, 0.69, 0.18);
+}
+
+.door {
+  stroke-width: 10px;
+  stroke-dashoffset: 0px;
+}
+
+svg.king- .door {
+  stroke-width: 16px;
+  stroke-dashoffset: 0px;
+}
+svg.king- .king line, svg.king- .king polyline {
+  stroke-dashoffset: 0px;
+  stroke-dasharray: 300px;
+}
+svg.king- .duke line, svg.king- .duke polyline {
+  stroke-dashoffset: 0px;
+  stroke-dasharray: 300px;
+}
+svg.king- .marquees line, svg.king- .marquees polyline {
+  stroke-dashoffset: 0px;
+  stroke-dasharray: 300px;
+}
+svg.king- .baron line, svg.king- .baron polyline {
+  stroke-dasharray: 300px;
+  stroke-dashoffset: 0px;
+}
+svg.king- .knight .wall {
+  stroke-dasharray: 300px;
+  stroke-dashoffset: 290px;
+}
+svg.duke- .duke line, svg.duke- .duke polyline {
+  stroke-dashoffset: 0px;
+  stroke-dasharray: 300px;
+}
+svg.duke- .marquees line, svg.duke- .marquees polyline {
+  stroke-dashoffset: 0px;
+  stroke-dasharray: 300px;
+}
+svg.duke- .baron line, svg.duke- .baron polyline {
+  stroke-dasharray: 300px;
+  stroke-dashoffset: 0px;
+}
+svg.duke- .knight .wall {
+  stroke-dasharray: 300px;
+  stroke-dashoffset: 290px;
+}
+svg.marquees- .marquees line, svg.marquees- .marquees polyline {
+  stroke-dashoffset: 0px;
+  stroke-dasharray: 300px;
+}
+svg.marquees- .baron line, svg.marquees- .baron polyline {
+  stroke-dasharray: 300px;
+  stroke-dashoffset: 0px;
+}
+svg.marquees- .knight .wall {
+  stroke-dasharray: 300px;
+  stroke-dashoffset: 290px;
+}
+svg.baron- .baron line, svg.baron- .baron polyline {
+  stroke-dashoffset: 0px;
+  stroke-dasharray: 300px;
+}
+svg.baron- .knight .wall {
+  stroke-dasharray: 300px;
+  stroke-dashoffset: 0px;
+}
+svg.knight- .door {
+  stroke-width: 10px;
+  stroke-dashoffset: 0px;
+}
+svg.knight- .wall {
+  stroke-dashoffset: -50px;
+}
+svg.knight- .window {
+  stroke-dashoffset: -49px;
+}
+
+line,
+polyline {
+  stroke-dasharray: 300px;
+  stroke-dashoffset: -300px;
+  -webkit-transition: stroke-dashoffset 1s;
+          transition: stroke-dashoffset 1s;
+}
+
+.knight.wall {
+  stroke-dashoffset: 0px;
+}
+.knight.window {
+  stroke-dashoffset: -100px;
+}

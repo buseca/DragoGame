@@ -1,0 +1,217 @@
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Fira+Mono:400,700' rel='stylesheet' type='text/css'>
+	<link href='DragoGame.css' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="DragoGame.js"></script>
+	<script></script>
+</head>
+
+	<div class="box-game">
+	<div id="tower-explosion" class=""></div>
+	<div class="dragon-explosion" class=""></div>
+	<div class="dragon-explosion" class=""></div>
+	<div class="dragon-explosion" class=""></div>
+	<div class="dragon-explosion" class=""></div>
+	<div class="dragon-explosion" class=""></div>
+	<div class="dragon-explosion" class=""></div>
+	<div class="dragon-explosion" class=""></div>
+	<div class="dragon-explosion" class=""></div>
+	<div class="dragon-explosion" class=""></div>
+	<div class="dragon-explosion" class=""></div>
+	
+	<div class="game-over">
+		<h1>Game Over!</h1>
+		<button class="restart-game">restart</button>
+	<br />
+		<p>
+			<a target="_blank" href="https://twitter.com/ruggeromotta">Follow me on Twitter</a>
+		</p>
+	</div>
+	<div class="you-won">
+		<h1>
+			<svg x="0px" y="0px"
+				 width="159px" height="119px" viewBox="0 0 159 119" enable-background="new 0 0 159 119" xml:space="preserve">
+			<circle fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round" stroke-miterlimit="10" cx="80.653" cy="21.177" r="7.419"/>
+			<polygon fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round" stroke-miterlimit="10" points="136.949,54.148 
+				126.949,100.074 34.356,100.074 24.356,54.148 57.691,75.723 80.653,37.111 103.616,75.722 "/>
+			<circle fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round" stroke-miterlimit="10" cx="145.586" cy="39.726" r="7.419"/>
+			<circle fill="none" stroke="#000000" stroke-width="6" stroke-linejoin="round" stroke-miterlimit="10" cx="15.72" cy="39.726" r="7.419"/>
+			<rect x="74.175" y="76.72" transform="matrix(0.7071 0.7071 -0.7071 0.7071 82.2536 -32.5798)" fill="#000000" width="12.558" height="12.558"/>
+			</svg>
+		</h1>
+		<h1>You are the king!</h1>
+		<p>
+		If you are curious about the svg animations, you can <a target="_blank" href="">read the article</a>. But as you just killed the last dragons in the world, you should also consider to <a target="_blank" href="http://wwf.panda.org/how_you_can_help/support_wwf/donate/">make a contribution</a> to save others animals from extinction.
+		</p>
+		<p>
+		<a target="_blank" href="https://twitter.com/ruggeromotta">Follow me on Twitter</a></p>
+	</div>
+	<div class="ui">
+		<h4>Welcome to the <b>Drago Game</b>, in this game you have to kill the red flying dragons: start the game and click the big button to fire the cannonball.</h4>
+		<p>
+			<label for="#diff">Select the difficulty </label>
+			<input type="range" id='diff' min='1' value='1' max='3' step='1' oninput="outputUpdate(value)" />
+			<script>
+				function outputUpdate(diff) {
+					$('#output').text(diff);
+				}
+			</script>
+			<span id="output">1</span>
+			<span>, and</span>
+			<button class="start-game">start game</button>
+		</p>
+		<p class="small">This game is made using svg paths and CSS animations.
+			<br />
+			If you are curious about the svg animations, you can <a target="_blank" href="">read this article</a> or just <a target="_blank" href="https://twitter.com/ruggeromotta">follow me.</a></p>
+	</div>
+
+	<svg class="knight-" version="1.1" id="canvas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 width="100%" height="100%" viewBox="-50 -176 850 430" enable-background="new -50 -176 850 430" xml:space="preserve">
+<rect class="sky" x="-50" y="-176" fill="#86FCFF" width="850" height="327.838"/>
+		
+		
+		
+		<path id="dragon-a" class="" fill="none" stroke="#A8240B" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" d="M850.5-90.5
+		c0,0-123-42-271,9s-221,41.193-317,0C171.635-120.49,11.501-82.536,76.501,59.167"/>
+		<path id="dragon-a-scia" class="" fill="none" stroke="#86FCFF" stroke-width="15" stroke-linecap="round" stroke-miterlimit="10" d="M850.5-90.5
+		c0,0-123-42-271,9s-221,41.193-317,0C171.635-120.49,11.501-82.536,76.501,59.167"/>
+	<path id="dragon-b" class="" fill="none" stroke="#A8240B" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" d="M845.5-29.5
+		c0,0-128,0-201-86s-165.051,42.908-248,86s-178.271-4.004-264.751,88.667"/>
+		<path id="dragon-b-scia" class="" fill="none" stroke="#86FCFF" stroke-width="15" stroke-linecap="round" stroke-miterlimit="10" d="M845.5-29.5
+		c0,0-128,0-201-86s-165.051,42.908-248,86s-178.271-4.004-264.751,88.667"/>
+	<path id="dragon-c" class="" fill="none" stroke="#A8240B" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" d="M845.5-144.441
+		c0,0-71-12.059-130,23.941s-145-10.5-228-17s-119,34-160,39s-124,1.479-162-8.261S87.021-37.037,94.77,37.881"/>
+		<path id="dragon-c-scia" class="" fill="none" stroke="#86FCFF" stroke-width="15" stroke-linecap="round" stroke-miterlimit="10" d="M845.5-144.441
+		c0,0-71-12.059-130,23.941s-145-10.5-228-17s-119,34-160,39s-124,1.479-162-8.261S87.021-37.037,94.77,37.881"/>
+	<path id="dragon-d" class="" fill="none" stroke="#A8240B" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" d="M845.5-54.25
+		c0,0-64.625-29.875-120,66.75s-132,101.25-214,96.625s-224,29.781-218-132.922S123.27-41.82,123.27,45.34"/>
+		<path id="dragon-d-scia" class="" fill="none" stroke="#86FCFF" stroke-width="15" stroke-linecap="round" stroke-miterlimit="10" d="M845.5-54.25
+		c0,0-64.625-29.875-120,66.75s-132,101.25-214,96.625s-224,29.781-218-132.922S123.27-41.82,123.27,45.34"/>
+	<path id="dragon-e" class="" fill="none" stroke="#A8240B" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" d="M831.646-95.646
+		c0,0-134.146,130.146-217.146,91.146s-38-81-8-54S537.27,39.233,478.385,3.867S329.5-24.5,352.5,27.5s69,11.5,56-20.742
+		C398.643-17.69,338-84.001,254.75-54.25S134.354,51.573,132.266,83.506"/>
+		<path id="dragon-e-scia" class="" fill="none" stroke="#86FAFd" stroke-width="15" stroke-linecap="round" stroke-miterlimit="10" d="M831.646-95.646
+		c0,0-134.146,130.146-217.146,91.146s-38-81-8-54S537.27,39.233,478.385,3.867S329.5-24.5,352.5,27.5s69,11.5,56-20.742
+		C398.643-17.69,338-84.001,254.75-54.25S134.354,51.573,132.266,83.506"/>
+		
+		
+	<!--	castello -->
+	<g id="king" class="king">
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="28.827" y1="95.504" x2="28.827" y2="106.838"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="23.077" y1="62.961" x2="23.077" y2="66.295"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="34.077" y1="62.961" x2="34.077" y2="66.295"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="45.327" y1="61.631" x2="45.327" y2="87.504"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="12.327" y1="151.838" x2="12.327" y2="61.631"/>
+		<polyline fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		29.077,49.297 50.577,62.297 7.077,62.297 28.577,49.297 	"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="175.76" y1="95.504" x2="175.76" y2="106.838"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="170.01" y1="62.961" x2="170.01" y2="66.295"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="181.01" y1="62.961" x2="181.01" y2="66.295"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="192.26" y1="61.631" x2="192.26" y2="151.838"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="159.26" y1="87.504" x2="159.26" y2="61.631"/>
+		<polyline fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		176.01,49.297 197.51,62.297 154.01,62.297 175.51,49.297 	"/>
+		<line class="door" fill="none" stroke="#346A6B" stroke-width="10" stroke-linecap="round" stroke-miterlimit="10" x1="102.52" y1="139.504" x2="102.52" y2="150.838"/>
+	</g>
+
+	<g id="knight" class="knight on">
+		<line class="door" fill="none" stroke="#346A6B" stroke-width="10" stroke-linecap="round" stroke-miterlimit="10" x1="102.52" y1="139.504" x2="102.52" y2="150.838"/>
+		<line class="window sx" fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="97.02" y1="52.504" x2="97.02" y2="112.799"/>
+		<line class="window dx" fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="108.02" y1="52.504" x2="108.02" y2="112.799"/>
+		<line class="wall dx" fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="119.27" y1="51.174" x2="119.27" y2="151.838"/>
+		<line class="wall sx" fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="86.27" y1="51.174" x2="86.27" y2="151.838"/>
+	</g>
+
+	<g id="baron" class="baron">
+		<line class="window ct" fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="102.52" y1="95.504" x2="102.52" y2="106.838"/>
+		<polyline class="roof" fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		103.02,38.84 124.52,51.84 81.02,51.84 102.52,38.84 	"/>
+		<polyline class="flag" fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		102.771,37.881 102.771,6.758 128.54,14.883 103.02,20.32 	"/>
+	</g>
+
+	<g id="duke" class="duke">
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="63.265" y1="117.838" x2="63.265" y2="129.172"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="141.265" y1="117.838" x2="141.265" y2="129.172"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="132.265" y1="88.838" x2="132.265" y2="96.172"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="141.265" y1="88.838" x2="141.265" y2="96.172"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="150.265" y1="88.838" x2="150.265" y2="96.172"/>
+		<polyline fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		123.27,98.504 159.26,98.504 159.26,151.838 	"/>
+		<polyline fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		123.27,87.504 159.26,87.504 159.26,97.504 	"/>
+		<polyline fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		81.26,98.504 45.27,98.504 45.27,151.838 	"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="72.265" y1="88.838" x2="72.265" y2="96.172"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="63.265" y1="88.838" x2="63.265" y2="96.172"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="54.265" y1="88.838" x2="54.265" y2="96.172"/>
+		<polyline fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		81.26,87.504 45.27,87.504 45.27,97.504 	"/>
+	</g>
+
+	<g id="marquees" class="marquees">
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="82.27" y1="83.506" x2="82.27" y2="152.84"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="123.27" y1="83.506" x2="123.27" y2="152.84"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="71.437" y1="62.67" x2="134.354" y2="62.67"/>
+		<polyline fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		71.437,62.838 81.437,82.838 124.104,82.838 134.104,62.838 	"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="87.02" y1="71.504" x2="87.02" y2="81.838"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="94.77" y1="71.504" x2="94.77" y2="81.838"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="102.52" y1="71.504" x2="102.52" y2="81.838"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="110.27" y1="71.504" x2="110.27" y2="81.838"/>
+		<line fill="none" stroke="#346A6B" stroke-width="5" stroke-linecap="round" stroke-miterlimit="10" x1="118.02" y1="71.504" x2="118.02" y2="81.838"/>
+	</g>
+		
+		
+
+	<path id="bullet" fill="none" stroke="#1C69B7" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" d="M546.5,152.5
+		c0,0-59.685-296.5-122.616-296.5c-46.179,0-128.534,194.581-158.147,268.483"/>
+		<path id="bullet-scia" fill="none" stroke="#80F0F0" stroke-width="10" stroke-linecap="" stroke-miterlimit="10" d="M546.5,152.5
+		c0,0-59.685-296.5-122.616-296.5c-46.179,0-128.534,194.581-158.147,268.483"/>	
+	<g>
+		<rect x="-50" y="151.838" fill="#4BEF58" width="850" height="102.162"/>
+	</g>
+		
+	<path id="cannon" fill="#3D3D3D" d="M280.304,108.693l-14.084-6.12l-0.319,3.474l-16.824,33.895c-1.388,2.188-1.767,4.976-0.764,7.579
+		c1.679,4.364,6.577,6.537,10.94,4.859c2.7-1.039,4.559-3.312,5.189-5.926l12.937-34.479L280.304,108.693z"/>
+	
+	<g>
+		<path class="wheel" fill="none" stroke="#B78D09" stroke-width="4" stroke-miterlimit="10" d="M281.889,140.678
+			c0-7.307-5.921-13.225-13.225-13.225c-7.305,0-13.226,5.918-13.226,13.225c0,7.305,5.921,13.227,13.226,13.227
+			C275.968,153.904,281.889,147.982,281.889,140.678z"/>
+	</g>
+	<path fill="none" stroke="#B78D09" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M225.75,151.25
+		c0,0,3,0,12.25,0s11.076-11.18,30.275-11.18"/>
+	<path id="heart-1" fill="none" stroke="crimson" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M160.025,175.92c-4.522,0-8.188,3.666-8.188,8.188c0-4.521-3.666-8.188-8.186-8.188c-4.522,0-8.187,3.666-8.187,8.188
+		c0,8.186,16.372,19.812,16.372,19.812s16.373-12.102,16.373-19.812C168.211,179.586,164.545,175.92,160.025,175.92z"/>
+	<path id="heart-2" fill="none" stroke="crimson" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M110.025,175.92c-4.522,0-8.188,3.666-8.188,8.188c0-4.521-3.666-8.188-8.186-8.188c-4.522,0-8.186,3.666-8.186,8.188
+		c0,8.186,16.372,19.812,16.372,19.812s16.373-12.102,16.373-19.812C118.211,179.586,114.545,175.92,110.025,175.92z"/>
+	<path id="heart-3" fill="none" stroke="crimson" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M60.025,175.92c-4.522,0-8.188,3.666-8.188,8.188c0-4.521-3.666-8.188-8.186-8.188c-4.522,0-8.186,3.666-8.186,8.188
+		c0,8.186,16.372,19.812,16.372,19.812s16.373-12.102,16.373-19.812C68.21,179.586,64.545,175.92,60.025,175.92z"/>
+
+
+	</svg>
+	
+	<button class="fire-button">FIRE!</button>
+	
+</div>	
+	
+	
+	
+	
+
+
+
+	
+	
+	
+	
+
+
+	
+	
+</html>
